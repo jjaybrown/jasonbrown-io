@@ -1,9 +1,8 @@
 ---
 external: false
 title: "Test for confidence not coverage"
-description: "Engineering teams are still targeted one lines covered vs confidence"
+description: "Engineering teams are still targeted on lines of code covered by a test. This silly method of validating code confidence costs time, money, customers and engineering cycles. Let's stop using it."
 date: 2024-02-09
-draft: false
 ---
 
 In software engineering, the goal of testing should be gaining confidence, not just achieving a high percentage of line coverage. While conventional testing methodologies such as unit testing is important for identifying issues within business logic, they don't always provide a comprehensive view of system reliability. Unit testing should be measuring the input/output of data - not functionality.
@@ -32,10 +31,27 @@ Kent Dodds, a well-known advocate for testing practices, often emphasizes the im
 
 > Tests are all about giving us the confidence we need to make changes to our code. You get that confidence by writing tests with a high level of user interaction.
 
-### End to end testing
+### End-to-end testing
 
 Automate everything. Functional testing is often carried out by engineers or QA teams and their focus tends to be on documenting critical flows, but rarely automating these interactions. 
 
-As a minimum requirement you should seek to automate key user flows and by following the approach described by Kent Dodds and others, you gain confidence that a broken test would have meant an unhappy customer.
+As a minimum requirement you should seek to automate key customer flows and by following the approach described by Kent Dodds and others, you gain confidence that a broken test would have meant an unhappy customer.
 
 Adopting automation requires a determination of what should be interactive and how to identify it through automation. __Avoid brittle tests by not using class identifiers or HTML nesting selectors__, instead utilise `data-test-ids` which can be used as landmarks within your UI for automation.
+
+The goal is to create landmarks throughout the customer journey that a customer would interact with. You can also utilise HTML attributes for accessibility as your landmarks. These avoid the brittleness mentioned above and ensure you and your team adopt good accessibility practises.
+
+End-to-end testing shouldn't happen at the end of your workflow, adopt a way of working which integrates tests as earlier as possible:
+- Run tests during pre-commit hooks (focus on lean, business critical tests otherwise these will be ignored quickly!)
+- Use [Wallabyjs](https://wallabyjs.com) as part of your IDE to validate tests in real-time
+- Github actions or automated workflows on pull-requests/merge-requests
+
+## Closing
+
+Whilst methodologies for testing have provided guidance and can be argued to improve testing practises, they've often been misunderstood either by management (you were thinking it) or by engineers trying to do the right thing without an example of "good".
+
+If you want to continue using test-driven-development (TDD) or behaviour-driven-development (BDD) with cucumber syntax, go for it! Just don't count the lines you cover.
+
+What's important is testing from the outside edges of your application, interacting as a customer might. Tests can be powerful, if they get out of your way and become the silent superheroes waiting to jump in when something bad might happen.
+
+__Always release on a Friday at 5:01pm.__
