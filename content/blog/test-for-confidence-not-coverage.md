@@ -24,7 +24,7 @@ Therefore, the use of customers as testers not only helps in identifying potenti
 
 ## Testing as a customer
 
-Whilst running tight feedback loops with actual customers (as described by Eric Ries) is valuable for testing product success. It doesn't build confidence in code and therefore an engineering cannot release to production without hesitation.
+Whilst running tight feedback loops with actual customers (as described by Eric Ries) is valuable for testing product success. It doesn't build confidence in code and therefore an engineer cannot release to production without hesitation.
 
 End-to-end user flow testing, particularly when using tools like [Playwright](https://playwright.dev/), provides greater confidence customer journeys and flows are correct. It simulates user interactions with the application in a way that unit testing and other non-customer centric methods can't replicate.
 
