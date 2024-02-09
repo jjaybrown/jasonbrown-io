@@ -24,7 +24,7 @@ Therefore, the use of customers as testers not only helps in identifying potenti
 
 ## Testing as a customer
 
-Whilst running tight feedback loops with actual customers (as described by Eric Ries) is valuable for testing product success. It doesn't build confidence in code and therefore an engineering and businesses ability to release to production without hesitation requires a little more thought.
+Whilst running tight feedback loops with actual customers (as described by Eric Ries) is valuable for testing product success. It doesn't build confidence in code and therefore an engineering cannot release to production without hesitation.
 
 End-to-end user flow testing, particularly when using tools like [Playwright](https://playwright.dev/), provides greater confidence customer journeys and flows are correct. It simulates user interactions with the application in a way that unit testing and other non-customer centric methods can't replicate.
 
@@ -33,3 +33,13 @@ Kent Dodds, a well-known advocate for testing practices, often emphasizes the im
 > Tests are all about giving us the confidence we need to make changes to our code. You get that confidence by writing tests with a high level of user interaction.
 
 ### End to end testing
+
+Automate everything. Functional testing is often carried out by engineers or QA teams and their focus tends to be on documenting critical flows, but rarely automating these interactions. 
+
+As a minimum requirement you should seek to automate key user flows and by following the approach described by Kent Dodds and others, you gain confidence that a broken test would have meant an unhappy customer.
+
+Adopting automation requires a determination of what should be interactive and how to identify it through automation. __Avoid brittle tests by not using class identifiers or HTML nesting selectors__, instead utilise `data-test-ids` which can be used as landmarks within your UI for automation.
+
+```
+<button data-test-id="button-to-be-clicked">Click me!</button>
+```
